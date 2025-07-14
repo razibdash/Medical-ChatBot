@@ -6,7 +6,10 @@ import userAvatar from "./assets/user.jpg";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hello! How can I assist you today?" },
+    {
+      sender: "bot",
+      text: "Welcome to the Medical Chatbot. How can I help you with your health today?",
+    },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,13 +32,14 @@ const ChatPage = () => {
     setInput("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/chat", {
+      const res = await fetch("http://localhost:8080/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ msg: input }),
       });
       const data = await res.json();
-      const botMsg = { sender: "bot", text: data.reply };
+      console.log(data);
+      const botMsg = { sender: "bot", text: data.answer };
       setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
       console.error(err);
