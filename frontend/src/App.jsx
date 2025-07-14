@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { SendHorizonal } from "lucide-react"; // optional icon
 import botAvatar from "./assets/bot.jpg"; // use actual image paths
 import userAvatar from "./assets/user.jpg";
+import logo from "./assets/logo.png";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([
@@ -65,8 +66,9 @@ const ChatPage = () => {
     >
       <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl flex flex-col overflow-hidden h-[90vh]">
         {/* Header */}
-        <div className="bg-blue-600 text-white text-xl font-semibold p-4">
-          🩺 Medical Chatbot
+        <div className="bg-blue-600 flex  gap-2 text-stone-100 text-xl font-semibold p-4">
+          <img src={logo} className="w-10 h-10 rounded-full " alt="logo" />
+          <p className="mt-1">Medical Chatbot</p>
         </div>
 
         {/* Chat Area */}
